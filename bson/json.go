@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
-	"gopkg.in/mgo.v2/internal/json"
+	"github.com/wcl48/mgo/internal/json"
 	"strconv"
 	"time"
 )

@@ -2,7 +2,7 @@ package txn
 
 import (
 	"fmt"
-	"gopkg.in/mgo.v2/bson"
+	"github.com/wcl48/mgo/bson"
 	. "gopkg.in/check.v1"
 )
 

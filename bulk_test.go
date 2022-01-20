@@ -28,7 +28,7 @@ package mgo_test
 
 import (
 	. "gopkg.in/check.v1"
-	"gopkg.in/mgo.v2"
+	"github.com/wcl48/mgo"
 )
 
 func (s *S) TestBulkInsert(c *C) {

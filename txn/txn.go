@@ -14,8 +14,8 @@ import (
 	"strings"
 	"sync"
 
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
+	"github.com/wcl48/mgo"
+	"github.com/wcl48/mgo/bson"
 
 	crand "crypto/rand"
 	mrand "math/rand"

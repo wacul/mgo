@@ -251,6 +251,12 @@ func (e *encoder) addElem(name string, v reflect.Value, minSize bool) {
 		return
 	}
 
+	if v.Kind() == reflect.Ptr && !v.Elem().IsValid() {
+		// set null for pointer type of nil
+		e.addElemName(0x0A, name)
+		return
+	}
+
 	if getter, ok := v.Interface().(Getter); ok {
 		getv, err := getter.GetBSON()
 		if err != nil {

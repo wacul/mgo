@@ -35,6 +35,8 @@ import (
 	"reflect"
 	"strconv"
 	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // --------------------------------------------------------------------------
@@ -423,6 +425,11 @@ func (e *encoder) addElem(name string, v reflect.Value, minSize bool) {
 			e.addBytes([]byte(s.Id)...)
 
 		case RegEx:
+			e.addElemName(0x0B, name)
+			e.addCStr(s.Pattern)
+			e.addCStr(s.Options)
+
+		case primitive.Regex:
 			e.addElemName(0x0B, name)
 			e.addCStr(s.Pattern)
 			e.addCStr(s.Options)

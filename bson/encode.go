@@ -254,8 +254,13 @@ func (e *encoder) addElem(name string, v reflect.Value, minSize bool) {
 	}
 
 	if v.Kind() == reflect.Ptr && !v.Elem().IsValid() {
-		// set null for pointer type of nil
+		// set null for pointer type of nil e.g. struct
 		e.addElemName(0x0A, name)
+		return
+	}
+
+	if v.Kind() == reflect.Interface && v.Elem().Kind() == reflect.Ptr && v.Elem().IsNil() {
+		// ignore pointer type of nil e.g. bson.M
 		return
 	}
 

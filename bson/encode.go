@@ -260,7 +260,8 @@ func (e *encoder) addElem(name string, v reflect.Value, minSize bool) {
 	}
 
 	if v.Kind() == reflect.Interface && v.Elem().Kind() == reflect.Ptr && v.Elem().IsNil() {
-		// ignore pointer type of nil e.g. bson.M
+		// set nil for pointer type of nil e.g. bson.M
+		e.addElemName(0x0A, name)
 		return
 	}
 

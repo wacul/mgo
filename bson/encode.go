@@ -265,6 +265,12 @@ func (e *encoder) addElem(name string, v reflect.Value, minSize bool) {
 		return
 	}
 
+	if v.Type() == reflect.TypeOf(primitive.DateTime(0)) {
+		// convert primitive.DateTime to time.Time
+		t := v.Interface().(primitive.DateTime).Time()
+		v = reflect.ValueOf(t)
+	}
+
 	if getter, ok := v.Interface().(Getter); ok {
 		getv, err := getter.GetBSON()
 		if err != nil {

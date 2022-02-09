@@ -204,6 +204,13 @@ func isZero(v reflect.Value) bool {
 
 func (e *encoder) addSlice(v reflect.Value) {
 	vi := v.Interface()
+	if d, ok := vi.(primitive.D); ok {
+		// accept primitive.D
+		for _, elem := range d {
+			e.addElem(elem.Key, reflect.ValueOf(elem.Value), false)
+		}
+		return
+	}
 	if d, ok := vi.(D); ok {
 		for _, elem := range d {
 			e.addElem(elem.Name, reflect.ValueOf(elem.Value), false)
@@ -218,6 +225,14 @@ func (e *encoder) addSlice(v reflect.Value) {
 	}
 	l := v.Len()
 	et := v.Type().Elem()
+	if et == reflect.TypeOf(primitive.E{}) {
+		// accept primitive.E
+		for i := 0; i < l; i++ {
+			elem := v.Index(i).Interface().(primitive.E)
+			e.addElem(elem.Key, reflect.ValueOf(elem.Value), false)
+		}
+		return
+	}
 	if et == typeDocElem {
 		for i := 0; i < l; i++ {
 			elem := v.Index(i).Interface().(DocElem)
@@ -376,7 +391,7 @@ func (e *encoder) addElem(name string, v reflect.Value, minSize bool) {
 		if et.Kind() == reflect.Uint8 {
 			e.addElemName(0x05, name)
 			e.addBinary(0x00, v.Bytes())
-		} else if et == typeDocElem || et == typeRawDocElem {
+		} else if et == typeDocElem || et == typeRawDocElem || et == reflect.TypeOf(primitive.E{}) {
 			e.addElemName(0x03, name)
 			e.addDoc(v)
 		} else {

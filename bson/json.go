@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
-	"github.com/wcl48/mgo/internal/json"
+	"github.com/wacul/mgo/internal/json"
 	"strconv"
 	"time"
 )

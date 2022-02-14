@@ -35,7 +35,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/wcl48/mgo/bson"
+	"github.com/wacul/mgo/bson"
 )
 
 // ---------------------------------------------------------------------------

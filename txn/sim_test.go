@@ -2,10 +2,10 @@ package txn_test
 
 import (
 	"flag"
-	"github.com/wcl48/mgo"
-	"github.com/wcl48/mgo/bson"
-	"github.com/wcl48/mgo/dbtest"
-	"github.com/wcl48/mgo/txn"
+	"github.com/wacul/mgo"
+	"github.com/wacul/mgo/bson"
+	"github.com/wacul/mgo/dbtest"
+	"github.com/wacul/mgo/txn"
 	. "gopkg.in/check.v1"
 	"math/rand"
 	"time"

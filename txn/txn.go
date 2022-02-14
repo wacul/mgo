@@ -14,8 +14,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/wcl48/mgo"
-	"github.com/wcl48/mgo/bson"
+	"github.com/wacul/mgo"
+	"github.com/wacul/mgo/bson"
 
 	crand "crypto/rand"
 	mrand "math/rand"

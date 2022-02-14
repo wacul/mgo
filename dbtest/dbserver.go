@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/wcl48/mgo"
+	"github.com/wacul/mgo"
 	"gopkg.in/tomb.v2"
 )
 
